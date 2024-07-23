@@ -1,6 +1,6 @@
 # Template file for 'audacity'
 pkgname=audacity
-version=3.6.1
+version=3.6.0
 revision=1
 build_style=cmake
 build_helper="cmake-wxWidgets-gtk3 qemu"
