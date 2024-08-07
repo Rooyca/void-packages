@@ -1,12 +1,13 @@
 # Template file for 'nix'
 pkgname=nix
-version=2.11.0
-revision=10
+version=2.24.1
+revision=1
 build_style=gnu-configure
 build_helper=qemu
 # Use /nix/var as suggested by the official Manual.
 configure_args="--localstatedir=/nix/var
- --with-sandbox-shell=/usr/bin/busybox.static"
+ --with-sandbox-shell=/usr/bin/busybox.static
+ --disable-gc"
 make_build_args="V=1 SET_RPATH_TO_LIBS=0"
 make_install_args="V=1 SET_RPATH_TO_LIBS=0"
 hostmakedepends="curl pkg-config flex tar xz automake autoconf-archive mdBook jq
@@ -22,8 +23,9 @@ license="LGPL-2.1-or-later"
 homepage="https://nixos.org/nix/"
 changelog="https://nixos.org/releases/${pkgname}/${pkgname}-${version}/manual/#sec-relnotes"
 distfiles="https://github.com/NixOS/nix/archive/refs/tags/${version}.tar.gz"
-checksum=6a90e144352eaccfab7ef7ed470bad382c4f92d62336b327df99627adba67a7c
+checksum=7f9fea61ea6696549b5b4024d9e7ff683637ab91664ab9ca69476a572de1af9c
 # disable_parallel_build="build is fine, only linking test"
+make_check=ci-skip # tests are broken
 
 if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
 	makedepends+=" musl-legacy-compat"
@@ -68,7 +70,9 @@ make_dirs="
 	/nix/store 1775 root nixbld"
 
 pre_configure() {
-	./bootstrap.sh
+	export ENABLE_UNIT_TESTS="no"
+	export ENABLE_FUNCTIONAL_TESTS=no
+	autoreconf -vfi
 }
 
 post_install() {

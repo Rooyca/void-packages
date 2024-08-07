@@ -1,25 +1,27 @@
---- a/Makefile
-+++ b/Makefile
-@@ -28,10 +28,8 @@ makefiles = \
+--- a/Makefile 2024-08-08 02:00:13.045497361 -0500
++++ b/Makefile 2024-08-08 02:01:46.920035079 -0500
+@@ -76,10 +76,9 @@
  OPTIMIZE = 1
  
  ifeq ($(OPTIMIZE), 1)
 -  GLOBAL_CXXFLAGS += -O3 $(CXXLTO)
 +  GLOBAL_CXXFLAGS += $(CXXLTO)
    GLOBAL_LDFLAGS += $(CXXLTO)
--else
+ else
 -  GLOBAL_CXXFLAGS += -O0 -U_FORTIFY_SOURCE
+   unexport NIX_HARDENING_ENABLE
  endif
  
- include mk/lib.mk
---- a/configure.ac
-+++ b/configure.ac
-@@ -41,8 +41,6 @@ AC_DEFINE_UNQUOTED(SYSTEM, ["$system"],
+--- a/configure.ac  2024-08-08 02:03:30.364628667 -0500
++++ b/configure.ac   2024-08-08 02:04:42.300041078 -0500
+@@ -47,10 +47,6 @@
+ # State should be stored in /nix/var, unless the user overrides it explicitly.
  test "$localstatedir" = '${prefix}/var' && localstatedir=/nix/var
  
+-# Assign a default value to C{,XX}FLAGS as the default configure script sets them
+-# to -O2 otherwise, which we don't want to have hardcoded
+-CFLAGS=${CFLAGS-""}
+-CXXFLAGS=${CXXFLAGS-""}
  
--CFLAGS=
--CXXFLAGS=
  AC_PROG_CC
  AC_PROG_CXX
- AC_PROG_CPP
