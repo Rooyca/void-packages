@@ -1,0 +1,17 @@
+# Template file for 'ryc-st'
+pkgname=ryc-st
+version=0.0.1
+revision=1
+build_style=gnu-makefile
+hostmakedepends=""
+makedepends=""
+short_desc="ryc fork of simple terminal"
+maintainer="rooyca <rooyca@gmail.com>"
+license="MIT"
+homepage="https://github.com/Rooyca/st"
+distfiles="https://github.com/Rooyca/st/archive/refs/tags/${version}.tar.gz"
+checksum=e9cff92c4e725aed3ec4d9f93a05f0d0ccc85a49c002f01b0e9743f81100dec5
+
+post_install() {
+	vlicense LICENSE
+}
