@@ -1,0 +1,14 @@
+# Template file for 'thonkbar'
+pkgname=thonkbar
+version=0.0.1
+revision=1
+build_style=gnu-makefile
+hostmakedepends=""
+makedepends="iniparser-devel"
+depends=""
+short_desc="Minimalist block based lemonbar wrapper"
+maintainer="rooyca <rooyca@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Rooyca/thonkbar"
+distfiles="https://github.com/Rooyca/thonkbar/archive/refs/tags/${version}.tar.gz"
+checksum=ac2d0806cedef3b7caf66d298c09f8b76aa7ad7514eacf0e1c9f3603ccacb1cc

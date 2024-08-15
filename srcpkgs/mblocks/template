@@ -1,0 +1,12 @@
+# Template file for 'mblocks'
+pkgname=mblocks
+version=0.0.1
+revision=1
+build_style=cargo
+short_desc="Multi-threaded memory-safe status monitor written in Rust"
+makedepends="libX11-devel"
+maintainer="rooyca <rooyca@gmail.com>"
+license="Public Domain"
+homepage="https://github.com/Rooyca/mblocks"
+distfiles="https://github.com/Rooyca/mblocks/archive/refs/tags/${version}.tar.gz"
+checksum=6b1e96d0fc23e7bfa466b21e80375db7ca757d30099058ef7892c25ae2049cd3
