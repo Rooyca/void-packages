@@ -1,0 +1,15 @@
+# Template file for '0x0'
+pkgname=0x0
+version=0.0.1
+revision=1
+build_style=gnu-makefile
+short_desc="Best command line interface to 0x0.st"
+maintainer="rooyca <rooyca@gmail.com>"
+license="ISC"
+homepage="https://github.com/Rooyca/0x0"
+distfiles="https://github.com/Rooyca/0x0/archive/refs/tags/${version}.tar.gz"
+checksum=d1da533ef6b758f0af7bf34b7dad74aa894855e139c4c489fc845ae5d15865ab
+
+post_install() {
+	vlicense LICENSE
+}
